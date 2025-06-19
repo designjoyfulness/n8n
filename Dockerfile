@@ -1,9 +1,9 @@
 FROM node:22
 
-# Eliminar Yarn para evitar conflicto
-RUN npm uninstall -g yarn || true
+# Habilitar Corepack para manejar pnpm/yarn según packageManager
+RUN corepack enable
 
-# Instalar pnpm en la versión específica
+# Instalar pnpm versión especificada (Corepack lo gestionará pero instalamos explícito)
 RUN npm install -g pnpm@10.12.1
 
 ENV PNPM_HOME="/pnpm"
